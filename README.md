@@ -1,0 +1,1 @@
+This project is a checkout direction project used in markets. Zustand is used for state management in order to handle renders within the project. I wrote the CSS myself, meaning I created my own UIs. The application has two themes: dark and light. The application frequently connects to REST APIs.

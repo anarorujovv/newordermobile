@@ -56,12 +56,14 @@ const Login = () => {
       await AsyncStorage.setItem("rsId", data.RetailStoreId);
       await AsyncStorage.setItem("userId", data.UserId);
       await AsyncStorage.setItem("token", data.Token);
-      await AsyncStorage.setItem("publicMode",data.PublicMode);
+      await AsyncStorage.setItem("publicMode", data.PublicMode);
+      await AsyncStorage.setItem("jwttoken", data.jwttoken);
 
       const resultStore = await fetch(`https://api.akul.az/1.0/${data.PublicMode}/controllers/pos/pos_getretailstore.php`, {
         method: 'POST',
         headers: {
-          "Token": data.Token
+          "Token": data.Token,
+          "Authorization": `Bearer ${data.jwttoken}`
         },
         body: JSON.stringify({})
       })
@@ -80,12 +82,12 @@ const Login = () => {
       <View style={styles.form}>
         <Text style={styles.headerText}>Daxil ol</Text>
         <IconButton
-        onPress={() => {
-          setKeyModal(true)
-        }}
-        br={60}
-        size={60}
-        icon={<Fontisto  name='keyboard' size={30} color={colors.white}/>}
+          onPress={() => {
+            setKeyModal(true)
+          }}
+          br={60}
+          size={60}
+          icon={<Fontisto name='keyboard' size={30} color={colors.white} />}
         />
         <View style={{ margin: 20 }} />
         <Input

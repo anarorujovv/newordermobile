@@ -8,7 +8,8 @@ const apiHeader = async (link, method, body) => {
             method: method,
             headers: {
                 "Token": await AsyncStorage.getItem("token"),
-                "RegisterId": "K01"
+                "RegisterId": "K01",
+                "Authorization": `Bearer ${await AsyncStorage.getItem("jwttoken")}`
             },
             body: JSON.stringify(body)
 
